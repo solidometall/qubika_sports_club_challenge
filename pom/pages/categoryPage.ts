@@ -31,11 +31,12 @@ export class CategoryPage {
         await this.newCategoryName.fill(name);
 
         if (isSubCategory && typeof parentCat === 'string') {
-					await this.newCategoryIsSub.check();
+					//await this.newCategoryIsSub.click();
 					await this.newSubCat.click();
 					await this.newSubCatName.fill(parentCat);
+					await this.newSubCat.filter({ hasText: parentCat}).click();
 				}
-				
+
         await this.submitBtn.click();
 				await this.newCategoryName.isHidden();
     }

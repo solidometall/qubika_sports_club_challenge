@@ -20,8 +20,9 @@ test.describe.serial('Category suite', () => {
 		const fakeCategory: Category = buildFakeSubcategory();
 		const dashboardPage: DashboardPage = await loginPage.doLogin(user.email, user.password);
 		const categoryPage: CategoryPage = await dashboardPage.navigationBar.goTocategoryPage();
-		await categoryPage.createCategory(fakeCategory.name, fakeCategory.isSubcategory);
+		await categoryPage.createCategory(fakeCategory.name, fakeCategory.isSubcategory, fakeCategory.parentCategory);
 		await categoryPage.goToLastPage();
-		await expect(categoryPage.categoryItems).toContainText(fakeCategory.name);
+		await expect(categoryPage.categoryItems).toContainText(fakeCategory.name, {useInnerText: true});
+		await expect(categoryPage.categoryItems).toContainText(fakeCategory.parentCategory as string, {useInnerText: true});
 	});
 });

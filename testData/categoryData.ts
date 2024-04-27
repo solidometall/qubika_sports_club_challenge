@@ -14,6 +14,6 @@ export function buildFakeSubcategory(): Category {
 	return {
 		name: 'automatedCat' + randomString,
 		isSubcategory: true,
-        parentCategory: 'automatedCat',
+        parentCategory: 'automatedCat1',
 	};
 }
