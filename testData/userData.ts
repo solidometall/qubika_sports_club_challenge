@@ -1,5 +1,5 @@
-import { currentTimestamp } from "../utils/generalFunctions";
-import { User } from "../utils/types";
+import { currentTimestamp } from '../utils/generalFunctions';
+import { User } from '../utils/types';
 
 export function buildFakeUser(): User {
 	const randomString: string = currentTimestamp().toString();

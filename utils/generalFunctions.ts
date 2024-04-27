@@ -1,5 +1,5 @@
-import { APIResponse } from "@playwright/test";
-import { User } from "./types";
+import { APIResponse } from '@playwright/test';
+import { User } from './types';
 
 export const currentTimestamp = () => Date.now();
 

@@ -10,7 +10,7 @@ import { LoginPage } from '../pom/pages/loginPage';
 interface MyFixtures {
 	apiContext: APIRequestContext;
 	createUser: User;
-    loginPage: LoginPage,
+	loginPage: LoginPage;
 }
 
 // extend base test to be used in multiple test files. Each of them will get the fixtures
@@ -40,17 +40,16 @@ export const test = base.extend<MyFixtures>({
 		const response: APIResponse = await userRequests.createUser(apiContext, userData);
 		expect(response.ok()).toBeTruthy();
 		const newUser: User = await parseUserFromResponse(response);
-        // We have to set the original password as the one in the response is encrypted
-        newUser.password = userData.password;
+		// We have to set the original password as the one in the response is encrypted
+		newUser.password = userData.password;
 		// Use the fixture value in the test
 		await use(newUser);
 	},
 
-    loginPage: async({page}, use) => {
-        const loginPage = new LoginPage(page);
-        await use(loginPage);
-    },
-
+	loginPage: async ({ page }, use) => {
+		const loginPage = new LoginPage(page);
+		await use(loginPage);
+	},
 });
 
 export { expect } from '@playwright/test';

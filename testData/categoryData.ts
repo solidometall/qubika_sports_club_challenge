@@ -1,5 +1,5 @@
-import { currentTimestamp } from "../utils/generalFunctions";
-import { Category } from "../utils/types";
+import { currentTimestamp } from '../utils/generalFunctions';
+import { Category } from '../utils/types';
 
 export function buildFakeCategory(): Category {
 	const randomString: string = currentTimestamp().toString();
@@ -14,6 +14,6 @@ export function buildFakeSubcategory(): Category {
 	return {
 		name: 'automatedCat' + randomString,
 		isSubcategory: true,
-        parentCategory: 'automatedCat1',
+		parentCategory: 'automatedCat1',
 	};
 }
