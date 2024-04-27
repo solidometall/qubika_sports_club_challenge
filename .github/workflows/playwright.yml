@@ -18,7 +18,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --reporter=github
+        env:
+          BASE_URL: "https://club-administration.qa.qubika.com"
+          BASE_API_URL: "https://api.club-administration.qa.qubika.com"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
