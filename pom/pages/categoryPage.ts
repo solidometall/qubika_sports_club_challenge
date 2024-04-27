@@ -7,6 +7,7 @@ export class CategoryPage {
     readonly newCategoryName: Locator;
     readonly newCategoryIsSub: Locator;
     readonly newSubCat: Locator;
+    readonly newSubCatList: Locator;
     readonly newSubCatName: Locator;
     readonly submitBtn: Locator;
     readonly paginationBtns: Locator;
@@ -20,6 +21,7 @@ export class CategoryPage {
         this.newCategoryName = page.locator('//*[@formcontrolname="name"]');
         this.newCategoryIsSub = page.locator('//*[@formcontrolname="subCategory"]');
         this.newSubCat = page.getByRole('combobox');
+        this.newSubCatList = page.getByRole('listbox');
         this.newSubCatName = page.locator('//*[@role="combobox"]/input');
         this.submitBtn = page.getByRole('button', { name:'Aceptar' });
 				this.paginationBtns = page.getByRole('listitem');
@@ -31,10 +33,10 @@ export class CategoryPage {
         await this.newCategoryName.fill(name);
 
         if (isSubCategory && typeof parentCat === 'string') {
-					//await this.newCategoryIsSub.click();
+					await this.newCategoryIsSub.check({ force: true});
 					await this.newSubCat.click();
 					await this.newSubCatName.fill(parentCat);
-					await this.newSubCat.filter({ hasText: parentCat}).click();
+					await this.newSubCatList.filter({ hasText: parentCat}).click();
 				}
 
         await this.submitBtn.click();
